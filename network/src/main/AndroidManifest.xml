@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="kayroc.android.learn">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LearnAndroid"
+        android:networkSecurityConfig="@xml/network_config"
+        tools:ignore="UnusedAttribute">
+        <activity
+            android:name=".retrofit.RetrofitActivity"
+            android:label="使用 Retrofit 访问网络" />
+        <activity
+            android:name=".okhttp.OkHttpActivity"
+            android:label="使用 OkHttp 访问网络" />
+        <activity
+            android:name=".http.HttpURLConnectionActivity"
+            android:label="使用 HttpURLConnection 访问网络" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

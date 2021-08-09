@@ -1,0 +1,19 @@
+rootProject.name = "LearnAndroid"
+// 学习 Activity
+include ':activity'
+// 学习 常用基础控件
+include ':ui'
+// 学习 Fragment
+include ':fragment'
+// 学习 BroadcastReceiver
+include ':broadcast'
+// 学习 数据持久化
+include ':persistence'
+// 学习 ContentProvider
+include ':provider'
+// 学习 多媒体（通知、拍照、音频、视频）
+include ':media'
+// 学习 Service
+include ':service'
+// 学习 网络技术
+include ':network'

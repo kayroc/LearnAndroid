@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="kayroc.android.learn">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LearnAndroid">
+
+        <!--主页面-->
+        <activity android:name=".MainActivity">
+
+            <!-- 应用程序入口 -->
+            <!--<intent-filter>-->
+            <!--    <action android:name="android.intent.action.MAIN" />-->
+
+            <!--    <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name=".FirstActivity"
+            android:label="Activity 的使用">
+
+            <!-- 应用程序入口 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SecondActivity"
+            android:label="Intent 的使用">
+            <intent-filter>
+                <!-- action：指明当前Activity可以响应的action -->
+                <!-- action 只能声明一个 -->
+                <action android:name="kayroc.android.learn.ACTION_TEST" />
+                <!-- category：包含了一些附加信息。 -->
+                <!-- android.intent.category.DEFAULT是默认的category，在启动意图时会自动添加到Intent中 -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="kayroc.android.learn.CATEGORY_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ThirdActivity"
+            android:label="模仿浏览器意图">
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <!-- android:scheme。用于指定数据的协议部分，如上例中的https部分。 -->
+                <!-- android:host。用于指定数据的主机名部分，如上例中的www.baidu.com部分。 -->
+                <!-- android:port。用于指定数据的端口部分，一般紧随在主机名之后。 -->
+                <!-- android:path。用于指定主机名和端口之后的部分，如一段网址中跟在域名之后的内 容。 -->
+                <!-- android:mimeType。用于指定可以处理的数据类型，允许使用通配符的方式进行指定。 -->
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--<category android:name="android.intent.category.BROWSABLE"/>-->
+                <data android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LifecycleActivity"
+            android:label="生命周期"/>
+        <activity android:name=".NormalActivity"
+            android:label="Activity 被回收后保存数据"/>
+        <activity android:name=".DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:label="Activity 样式的 Dialog"/>
+        <activity android:name=".LaunchModeActivity"
+            android:launchMode="standard"
+            android:label="启动模式"/>
+    </application>
+
+</manifest>

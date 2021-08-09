@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kayroc.android.learn">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LearnAndroid">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".notification.NotificationActivity"
+            android:label="通知的使用"/>
+        <activity android:name=".notification.JumpActivity"
+            android:label="通知跳转页面"/>
+
+        <activity android:name=".camera.CameraActivity"
+            android:label="相机/相册选取"/>
+
+        <activity android:name=".audio.AudioActivity"
+            android:label="播放音频"/>
+        <activity android:name=".video.VideoActivity"
+            android:label="播放视频"/>
+
+        <!--
+            android:name：属性的值是固定的
+            android:authorities：属性的值必须和 FileProvider.getUriForFile() 方法中的第二个参数一致
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="kayroc.android.learn.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <!--指定Uri的共享路径-->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
