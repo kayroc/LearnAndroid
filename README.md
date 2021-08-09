@@ -1,6 +1,6 @@
 # 学习 Android
 
-|Module 名称｜功能｜
+|Module 名称|功能|
 |:-:|:-:|
 |activity|Activity 的基本使用|
 |ui|常用基础控件|
