@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kayroc.android.learn">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LearnAndroid">
+        <activity android:name=".MainActivity"
+            android:label="实现滑动的七种方法">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scroll1.ScrollActivity"
+            android:label="layout"/>
+        <activity android:name=".scroll2.ScrollActivity"
+            android:label="offsetLeftAndRight()和offsetTopAndBottom()"/>
+        <activity android:name=".scroll3.ScrollActivity"
+            android:label="LayoutParams"/>
+        <activity android:name=".scroll4.ScrollActivity"
+            android:label="scrollTo与scrollBy"/>
+        <activity android:name=".scroll5.ScrollActivity"
+            android:label="Scroller"/>
+        <activity android:name=".scroll6.ScrollActivity"
+            android:label="属性动画"/>
+        <activity android:name=".scroll7.ScrollActivity"
+            android:label="ViewDragHelper"/>
+    </application>
+
+</manifest>

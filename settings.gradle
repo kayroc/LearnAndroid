@@ -2,7 +2,7 @@ rootProject.name = "LearnAndroid"
 // 学习 Activity
 include ':activity'
 // 学习 常用基础控件
-include ':ui'
+include ':view'
 // 学习 Fragment
 include ':fragment'
 // 学习 BroadcastReceiver
@@ -17,3 +17,5 @@ include ':media'
 include ':service'
 // 学习 网络技术
 include ':network'
+// 实现滑动的七种方法
+include ':scroll'

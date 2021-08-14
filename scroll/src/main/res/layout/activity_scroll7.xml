@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kayroc.android.learn.scroll7.DragViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_dark"
+        android:gravity="center"
+        android:text="Menu"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_purple"
+        android:gravity="center"
+        android:text="Main"
+        tools:ignore="HardcodedText" />
+</kayroc.android.learn.scroll7.DragViewGroup>
