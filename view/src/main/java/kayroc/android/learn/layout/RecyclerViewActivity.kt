@@ -1,4 +1,4 @@
-package kayroc.android.learn.view
+package kayroc.android.learn.layout
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import kayroc.android.learn.R
 
 /**
+ * RecyclerView 列表视图的使用
+ * 官方文档：https://developer.android.google.cn/guide/topics/ui/layout/recyclerview
+ *         https://developer.android.google.cn/guide/topics/ui/layout/recyclerview-custom
+ * API文档：https://developer.android.google.cn/reference/kotlin/androidx/recyclerview/widget/RecyclerView
  * @author kayroc
  */
 class RecyclerViewActivity : AppCompatActivity() {
@@ -21,7 +25,7 @@ class RecyclerViewActivity : AppCompatActivity() {
 
         val data = listOf("Android", "Ios", "Html", "Css", "JavaScript", "Python", "C", "C++",
             "Ruby", "Docker", "MySql", "Java", "Go", "Maven", "Vue.js", "Jquery", "Node.js", "Bootstrap",
-            "Xml", "Json", "Svg", "Svn", "Git", "Kotlin").sorted()
+            "Xml", "Json", "Svg", "Svn", "Git", "Kotlin", "Php").sorted()
 
         val mRecyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         mRecyclerView.layoutManager = LinearLayoutManager(this)

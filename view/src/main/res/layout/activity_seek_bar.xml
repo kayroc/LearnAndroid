@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <!--
+        android:max="100"	                // 滑动条的最大值
+        android:progress="60"	            // 滑动条的当前值
+        android:secondaryProgress="70"	    // 二级滑动条的进度
+        android:progressDrawable	        // 设置 SeekBar 轨道的 Drawable
+        android:thumb	                    // 设置 SeekBar 拖动条的 Drawable
+    -->
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:layout_gravity="center"
+        android:progress="60"
+        android:secondaryProgress="70"/>
+</FrameLayout>

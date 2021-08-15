@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        // 子控件排列方向：
+        android:orientation="horizontal"    // 水平（默认）
+        android:orientation="vertical"      // 垂直
+        // 对齐方式：
+        android:layout_gravity              // 自身相对父控件对齐
+        android:gravity                     // 指定对象应如何在其自身边界内在 X 轴和 Y 轴上定位其内容
+        // 权重：
+        android:layout_weight               // 占屏幕剩余宽度的比例
+
+        android:baselineAligned             // 设置为 false 时，防止布局对齐其子项的基线
+        android:baselineAlignedChildIndex   // 当线性布局是另一个基线对齐的布局的一部分时，它可以指定基线对齐到其子项中的哪个子项（即，哪个子项 TextView）
+        android:measureWithLargestChild     // 当设置为 true 时，所有有权重的子元素都将被认为是最大元素的最小尺寸
+        android:divider                     // 可绘制用作按钮之间的垂直分隔线。
+        android:showDividers                // 设置分割线所在的位置，有四个可选值 none/middle/begin/end
+        android:dividerPadding              // 设置分割线的内边距
+    -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#33FF0000"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            tools:ignore="HardcodedText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="LinearLayout\n详情看注释"
+            android:textColor="#666666"
+            android:textSize="20sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

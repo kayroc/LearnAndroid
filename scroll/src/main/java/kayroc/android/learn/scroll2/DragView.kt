@@ -45,9 +45,9 @@ class DragView @JvmOverloads constructor(
                 val offsetX = x - lastX
                 val offsetY = y - lastY
                 // 同时对left和right进行偏移
-                offsetLeftAndRight(offsetX);
+                offsetLeftAndRight(offsetX)
                 // 同时对top和bottom进行偏移
-                offsetTopAndBottom(offsetY);
+                offsetTopAndBottom(offsetY)
             }
         }
     }
@@ -67,9 +67,9 @@ class DragView @JvmOverloads constructor(
                 val offsetX = rawX - lastRawX
                 val offsetY = rawY - lastRawY
                 // 同时对left和right进行偏移
-                offsetLeftAndRight(offsetX);
+                offsetLeftAndRight(offsetX)
                 // 同时对top和bottom进行偏移
-                offsetTopAndBottom(offsetY);
+                offsetTopAndBottom(offsetY)
                 // 重新设置初始坐标
                 lastRawX = rawX
                 lastRawY = rawY

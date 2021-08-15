@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="none 无"
+            android:importantForAutofill="no"
+            android:inputType="none"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="text 文本"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textCapCharacters 大写字符"
+            android:importantForAutofill="no"
+            android:inputType="textCapCharacters"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textCapWords 大写词"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textCapSentences 大写句子"
+            android:importantForAutofill="no"
+            android:inputType="textCapSentences"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textAutoCorrect 自动更正"
+            android:importantForAutofill="no"
+            android:inputType="textAutoCorrect"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textAutoComplete 自动完成"
+            android:importantForAutofill="no"
+            android:inputType="textAutoComplete"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textMultiLine 多行"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textImeMultiLine 名称多行"
+            android:importantForAutofill="no"
+            android:inputType="textImeMultiLine"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textNoSuggestions 没有建议"
+            android:importantForAutofill="no"
+            android:inputType="textNoSuggestions"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textUri Uri"
+            android:importantForAutofill="no"
+            android:inputType="textUri"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textEmailAddress 电子邮件地址"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textEmailSubject 邮件主题格式"
+            android:importantForAutofill="no"
+            android:inputType="textEmailSubject"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textShortMessage 短消息"
+            android:importantForAutofill="no"
+            android:inputType="textShortMessage"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textLongMessage 长消息"
+            android:importantForAutofill="no"
+            android:inputType="textLongMessage"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textPersonName 人名"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textPostalAddress 邮政格式"
+            android:importantForAutofill="no"
+            android:inputType="textPostalAddress"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textPassword 密码"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textVisiblePassword 可见密码"
+            android:importantForAutofill="no"
+            android:inputType="textVisiblePassword"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textWebEditText 网页表单的文本格式"
+            android:importantForAutofill="no"
+            android:inputType="textWebEditText"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textFilter 文本筛选格式"
+            android:importantForAutofill="no"
+            android:inputType="textFilter"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textPhonetic 拼音输入格式"
+            android:importantForAutofill="no"
+            android:inputType="textPhonetic"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textWebEmailAddress 网络电子邮件地址"
+            android:importantForAutofill="no"
+            android:inputType="textWebEmailAddress"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textWebPassword 网页密码"
+            android:importantForAutofill="no"
+            android:inputType="textWebPassword"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="number 数字"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="numberSigned 有符号数字"
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="numberDecimal 带小数点的数字"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="numberPassword 数字密码"
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="phone 拨号键盘"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="datetime 日期+时间格式"
+            android:importantForAutofill="no"
+            android:inputType="datetime"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="date 日期键盘"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="time 时间键盘"
+            android:importantForAutofill="no"
+            android:inputType="time"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

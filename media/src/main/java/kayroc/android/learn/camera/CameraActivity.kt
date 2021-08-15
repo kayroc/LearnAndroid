@@ -44,9 +44,9 @@ class CameraActivity : AppCompatActivity() {
             }
             outputImage.createNewFile()
             imageUri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                FileProvider.getUriForFile(this, "kayroc.android.learn.FileProvider", outputImage);
+                FileProvider.getUriForFile(this, "kayroc.android.learn.FileProvider", outputImage)
             } else {
-                Uri.fromFile(outputImage);
+                Uri.fromFile(outputImage)
             }
             // 启动相机程序
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)

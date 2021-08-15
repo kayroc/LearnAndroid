@@ -1,171 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <!--
-        FrameLayout(帧布局)
-        属性：
-            android:foreground              // 设置改帧布局容器的前景图像
-            android:foregroundGravity       // 设置前景图像显示的位置
-    -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#33FF7F00"
-        app:layout_constraintTop_toBottomOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="FrameLayout\n详情看注释"
-            android:textColor="#666666"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-    </FrameLayout>
-
-    <!--
-        LinearLayout(线性布局)
-        属性：
-            // 子控件排列方向：
-            android:orientation="horizontal"    // 水平（默认）
-            android:orientation="vertical"      // 垂直
-            // 对齐方式：
-            android:layout_gravity              // 自身相对父控件对齐
-            android:gravity                     // 子控件相对自身对齐
-            // 权重：
-            android:layout_weight               // 占屏幕剩余宽度的比例
-    -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#33FF0000"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="LinearLayout\n详情看注释"
-            android:textColor="#666666"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-    </LinearLayout>
-
-    <!--
-        RelativeLayout(相对布局)
-        属性：
-            android:layout_centerHorizontal     // 水平居中
-            android:layout_centerVertical       // 垂直居中
-            android:layout_centerInParent       // 相对于父元素完全居中
-            android:layout_alignParentBottom    // 贴紧父元素的下边缘
-            android:layout_alignParentLeft      // 贴紧父元素的左边缘
-            android:layout_alignParentRight     // 贴紧父元素的右边缘
-            android:layout_alignParentTop       // 贴紧父元素的上边缘　　
-
-            android:layout_below                // 在某元素的下方
-            android:layout_above                // 在某元素的的上方
-            android:layout_toLeftOf             // 在某元素的左边
-            android:layout_toRightOf            // 在某元素的右边
-            android:layout_alignTop             // 本元素的上边缘和某元素的的上边缘对齐
-            android:layout_alignLeft            // 本元素的左边缘和某元素的的左边缘对齐
-            android:layout_alignBottom          // 本元素的下边缘和某元素的的下边缘对齐
-            android:layout_alignRight           // 本元素的右边缘和某元素的的右边缘对齐
-    -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#33FFFF00">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="RelativeLayout\n详情看注释"
-            android:textColor="#666666"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-    </RelativeLayout>
-
-    <!--
-        ConstraintLayout(约束布局)
-        属性：
-            // 控制上下左右边的约束
-            app:layout_constraintLeft_toLeftOf="parent"             // 产生约束: 左边和指定控件的左边
-            app:layout_constraintLeft_toRightOf="@id/guideline1"    // 产生约束: 左边和指定控件的右边
-            app:layout_constraintRight_toLeftOf="@id/guideline1"    // 产生约束: 右边和指定控件的左边
-            app:layout_constraintRight_toRightOf="parent"           // 产生约束: 右边和指定控件的右边
-            app:layout_constraintStart_toEndOf="@id/guideline1"     // 产生约束: 开始边和指定控件的结束边
-            app:layout_constraintStart_toStartOf="parent"           // 产生约束: 开始边和指定控件的开始边
-            app:layout_constraintEnd_toEndOf="parent"               // 产生约束: 结束边和指定控件的结束边
-            app:layout_constraintEnd_toStartOf="@id/guideline1"     // 产生约束: 结束边和指定控件的开始边
-            app:layout_constraintTop_toBottomOf="@id/guideline2"    // 产生约束: 顶边和指定控件的底边
-            app:layout_constraintTop_toTopOf="parent"               // 产生约束: 顶边和指定控件的顶边
-            app:layout_constraintBottom_toBottomOf="parent"         // 产生约束: 底边和指定控件的底边
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"   // 产生约束: 底边和指定控件的顶边
-            // 控制基线的约束
-            app:layout_constraintBaseline_toBaselineOf="parent"     // 产生约束: 基线和指定控件的基线
-            // 控制宽高比
-            app:layout_constraintDimensionRatio="2:1"               // 宽:高 = 2:1 (要求宽高值有一项为0)
-            // 辅助控制高度
-            app:layout_constraintHeight_default="spread"            // 默认高度 [spread:相当于match_parent, wrap:相当于wrap_content]
-            app:layout_constraintHeight_max="50dp"                  // 最大高度
-            app:layout_constraintHeight_min="30dp"                  // 最小高度
-            // 辅助控制宽度
-            app:layout_constraintWidth_default="spread"             // 默认宽度
-            app:layout_constraintWidth_max="50dp"                   // 最大宽度
-            app:layout_constraintWidth_min="30dp"                   // 最小宽度
-            // 控制水平约束
-            app:layout_constraintHorizontal_bias="0.5"              // 水平约束的偏移 (0为左侧, 0.5居中, 1为右侧)
-            app:layout_constraintHorizontal_chainStyle="spread"     // 群组关联样式 [spread:展开,存在多余空间则平分(默认); spread_inside:展开,存在多余空间,两端不占空间,其余平分; packed:包裹,群组两侧产生约束使它们聚集在一起]
-            app:layout_constraintHorizontal_weight="1"              // 群组关联样式为 spread 或 spread_inside 时, 各 View 平分剩余空间的权重
-            // 控制垂直约束
-            app:layout_constraintVertical_bias="0.5"                // 同理于控制水平约束
-            app:layout_constraintVertical_chainStyle="spread"       // 同理于控制水平约束
-            app:layout_constraintVertical_weight="1"/>              // 同理于控制水平约束
-            // 参考线
-            app:layout_constraintGuide_begin="60dp"                 // 参考线距离开始位置的绝对位置
-            app:layout_constraintGuide_end="60dp"                   // 参考线距离结束位置的绝对位置
-            app:layout_constraintGuide_percent="0.66"/>             // 参考线相对位置
-
-            // 群组: View 之间互相约束, 会产生相互影响, 组成一个"群组".
-            // 群组中的第一个 View 被称之为 Chain head, 由它控制着整个群组的属性
-            // 包括 chainStyle & bias & weight
-    -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#3300FF00">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="RelativeLayout\n详情看注释"
-            android:textColor="#666666"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3300FFFF"
-        android:fillViewport="true"
-        android:paddingVertical="20dp">
-
-        <TextView
+        <Button
+            android:id="@+id/btn_use_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="ScrollView\n只能包含一个子控件"
-            android:textColor="#666666"
-            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="LinearLayout"
+            android:textAllCaps="false"
             tools:ignore="HardcodedText" />
-    </ScrollView>
-</LinearLayout>
+
+        <Button
+            android:id="@+id/btn_use_relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="RelativeLayout"
+            android:textAllCaps="false"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_use_frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="FrameLayout"
+            android:textAllCaps="false"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_use_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="ConstraintLayout"
+            android:textAllCaps="false"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_use_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="ScrollView"
+            android:textAllCaps="false"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_use_horizontal_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="HorizontalScrollView"
+            android:textAllCaps="false"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_use_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="RecyclerView"
+            android:textAllCaps="false"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

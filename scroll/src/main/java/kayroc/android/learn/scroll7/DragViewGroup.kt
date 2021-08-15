@@ -73,7 +73,8 @@ class DragViewGroup @JvmOverloads constructor(
             }
         }
     }
-    private val mViewDragHelper: ViewDragHelper? = ViewDragHelper.create(this, callback);
+
+    private val mViewDragHelper: ViewDragHelper? = ViewDragHelper.create(this, callback)
 
 
     override fun computeScroll() {

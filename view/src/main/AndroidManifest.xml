@@ -1,25 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kayroc.android.learn" >
+    package="kayroc.android.learn">
 
+    <!--https://developer.android.com/guide/topics/manifest/application-element?hl=zh-cn-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LearnAndroid" >
-        <activity android:name=".MainActivity" >
+        android:theme="@style/Theme.LearnAndroid">
+        <activity
+            android:name=".MainActivity"
+            android:label="基础控件的使用">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ViewActivity" />
-        <activity android:name=".viewgroup.LayoutActivity" />
-        <activity android:name=".view.ListViewActivity" />
-        <activity android:name=".view.RecyclerViewActivity" />
+
+        <activity
+            android:name=".layout.LayoutActivity"
+            android:label="ViewGroup" />
+        <activity android:name=".layout.LinearLayoutActivity"
+            android:label="LinearLayout 的使用"/>
+        <activity android:name=".layout.RelativeLayoutActivity"
+            android:label="RelativeLayout 的使用"/>
+        <activity android:name=".layout.FrameLayoutActivity"
+            android:label="FrameLayout 的使用"/>
+        <activity android:name=".layout.ConstraintLayoutActivity"
+            android:label="ConstraintLayout 的使用"/>
+        <activity android:name=".layout.ScrollViewActivity"
+            android:label="ScrollView 的使用"/>
+        <activity android:name=".layout.HorizontalScrollViewActivity"
+            android:label="HorizontalScrollView 的使用"/>
+        <activity android:name=".layout.RecyclerViewActivity"
+            android:label="RecyclerView 的使用"/>
+
+        <activity
+            android:name=".view.ViewActivity"
+            android:label="View" />
+        <activity
+            android:name=".view.ButtonActivity"
+            android:label="Button 的使用" />
+        <activity
+            android:name=".view.ImageButtonActivity"
+            android:label="ImageButton 的使用" />
+        <activity
+            android:name=".view.TextViewActivity"
+            android:label="TextView 的使用" />
+        <activity
+            android:name=".view.EditTextActivity"
+            android:label="EditText 的使用" />
+        <activity
+            android:name=".view.ImageViewActivity"
+            android:label="ImageView 的使用" />
+        <activity
+            android:name=".view.CheckBoxActivity"
+            android:label="CheckBox 的使用" />
+        <activity
+            android:name=".view.RadioActivity"
+            android:label="RadioGroup &amp; RadioButton 的使用" />
+        <activity
+            android:name=".view.SpinnerActivity"
+            android:label="Spinner 的使用" />
+        <activity
+            android:name=".view.AutoCompleteTextViewActivity"
+            android:label="AutoCompleteTextView 的使用" />
+        <activity
+            android:name=".view.DataPickerActivity"
+            android:label="DataPicker 的使用" />
+        <activity
+            android:name=".view.ProgressBarActivity"
+            android:label="ProgressBar 的使用" />
+        <activity
+            android:name=".view.RatingBarActivity"
+            android:label="RatingBar 的使用" />
+        <activity
+            android:name=".view.SeekBarActivity"
+            android:label="SeekBar 的使用" />
+        <activity
+            android:name=".view.ToggleButtonActivity"
+            android:label="ToggleButton 的使用" />
+        <activity
+            android:name=".view.SwitchActivity"
+            android:label="Switch 的使用" />
+        <activity
+            android:name=".view.ListViewActivity"
+            android:label="ListView 的使用" />
+        <activity
+            android:name=".view.GridViewActivity"
+            android:label="GridView 的使用" />
     </application>
 
 </manifest>

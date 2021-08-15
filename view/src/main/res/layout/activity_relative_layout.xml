@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+        // 基本属性
+        android:gravity                     // 设置容器内组件的排序方式
+        android:ignoreGravity               // 指示哪个视图不应受重力影响
+
+        // 根据父容器定位属性
+        android:layout_centerHorizontal     // 水平居中
+        android:layout_centerVertical       // 垂直居中
+        android:layout_centerInParent       // 相对于父元素完全居中
+        android:layout_alignParentBottom    // 贴紧父元素的下边缘
+        android:layout_alignParentLeft      // 贴紧父元素的左边缘
+        android:layout_alignParentRight     // 贴紧父元素的右边缘
+        android:layout_alignParentTop       // 贴紧父元素的上边缘　　
+
+        // 根据兄弟组件定位属性
+        android:layout_below                // 在某元素的下方
+        android:layout_above                // 在某元素的的上方
+        android:layout_toLeftOf             // 在某元素的左边
+        android:layout_toRightOf            // 在某元素的右边
+        android:layout_alignTop             // 本元素的上边缘和某元素的的上边缘对齐
+        android:layout_alignLeft            // 本元素的左边缘和某元素的的左边缘对齐
+        android:layout_alignBottom          // 本元素的下边缘和某元素的的下边缘对齐
+        android:layout_alignRight           // 本元素的右边缘和某元素的的右边缘对齐
+    -->
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#33FFFF00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="RelativeLayout\n详情看注释"
+            android:textColor="#666666"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

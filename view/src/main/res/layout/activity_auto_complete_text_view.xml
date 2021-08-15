@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+        android:completionHint
+            设置下拉菜单中的提示标题
+        android:completionHintView
+            定义提示视图中显示下拉菜单
+        android:completionThreshold
+            指定用户至少输入多少个字符才会显示提示
+        android:dropDownAnchor
+            设置下拉菜单的定位"锚点"组件，如果没有指定该属性，将使用该TextView作为定位"锚点"组件
+        android:dropDownHeight
+            设置下拉菜单的高度
+        android:dropDownWidth
+            设置下拉菜单的宽度
+        android:dropDownHorizontalOffset
+            指定下拉菜单与文本之间的水平间距
+        android:dropDownVerticalOffset
+            指定下拉菜单与文本之间的竖直间距
+        android:dropDownSelector
+            设置下拉菜单点击效果
+        android:popupBackground
+            设置下拉菜单的背景
+    -->
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:completionThreshold="1"
+        android:hint="编程语言"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
