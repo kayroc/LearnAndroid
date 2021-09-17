@@ -7,6 +7,7 @@ import kayroc.android.learn.ui.adapter.FragmentPagerAdapter
 import kayroc.android.learn.ui.fragment.CustomViewFragment
 
 /**
+ * Canvas 的使用
  * @author kayroc
  */
 class CanvasActivity : TabPagerActivity() {

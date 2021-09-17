@@ -24,6 +24,6 @@ abstract class BaseActivity : AppCompatActivity() {
             finish()
             return true
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 }

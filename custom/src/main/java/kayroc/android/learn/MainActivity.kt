@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kayroc.android.learn.entity.MenuEntity
 import kayroc.android.learn.ui.activity.CanvasActivity
+import kayroc.android.learn.ui.activity.PaintActivity
 import kayroc.android.learn.ui.adapter.TitleAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val data = arrayListOf(
-            MenuEntity("Canvas 的使用", CanvasActivity::class.java)
+            MenuEntity("Canvas 的使用", CanvasActivity::class.java),
+            MenuEntity("Paint 的使用", PaintActivity::class.java),
         )
 
         val titleAdapter = TitleAdapter(data)

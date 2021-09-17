@@ -39,7 +39,7 @@ class CanvasRotateView @JvmOverloads constructor(
         canvas?.drawRect(rectF, mPaint)
 
         // 顺时针 旋转180度 <-- 默认旋转中心为原点
-        canvas?.rotate(180f);
+        canvas?.rotate(180f)
 
         // 绘制蓝色矩形
         mPaint.color = Color.BLUE

@@ -26,7 +26,7 @@ class CanvasDrawBitmapView @JvmOverloads constructor(
 
     private val mMatrix: Matrix = Matrix()
 
-    private val mBitmap: Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.android_boy)
+    private val mBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.android_boy)
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)

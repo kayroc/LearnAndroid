@@ -26,7 +26,7 @@ class CanvasSaveAndRestoreView @JvmOverloads constructor(
         strokeWidth = 10f
     }
 
-    private val mBitmap: Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.maps)
+    private val mBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.maps)
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)

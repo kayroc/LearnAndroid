@@ -1,49 +1,35 @@
 package kayroc.android.learn.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewStub
 import androidx.annotation.LayoutRes
-import androidx.fragment.app.Fragment
 import kayroc.android.learn.R
+import kayroc.android.learn.base.BaseFragment
 
 /**
  * @author kayroc
  */
-class CustomViewFragment : Fragment() {
-
-    private var layoutRes: Int = 0
+class CustomViewFragment : BaseFragment() {
 
     companion object {
-        fun newInstance(@LayoutRes layoutRes: Int): CustomViewFragment{
+        fun newInstance(@LayoutRes layoutRes: Int): CustomViewFragment {
             val args = Bundle()
-            args.putInt("layoutRes", layoutRes);
+            args.putInt("layoutRes", layoutRes)
             val fragment = CustomViewFragment()
             fragment.arguments = args
             return fragment
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_custom_view
+    }
 
-        val args = arguments
-        if (args != null) {
-            layoutRes = args.getInt("layoutRes")
-        }
-
-        val view = inflater.inflate(R.layout.fragment_custom_view, container, false)
-
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         val customViewStub = view.findViewById<ViewStub>(R.id.custom_view_stub)
-        customViewStub.layoutResource = layoutRes
-        customViewStub.inflate()
-
-        return view
+        customViewStub?.layoutResource = if (arguments == null) 0 else arguments!!.getInt("layoutRes")
+        customViewStub?.inflate()
     }
 
 }

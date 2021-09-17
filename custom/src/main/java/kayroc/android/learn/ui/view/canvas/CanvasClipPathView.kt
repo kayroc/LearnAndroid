@@ -24,7 +24,7 @@ class CanvasClipPathView @JvmOverloads constructor(
         strokeWidth = 60f
     }
 
-    private val mBitmap: Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.android_boy)
+    private val mBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.android_boy)
 
     private val mPath: Path = Path()
 

@@ -20,7 +20,7 @@ class ToggleButtonActivity : AppCompatActivity() {
         setContentView(R.layout.activity_toggle_button)
 
         mToggleButton.setOnCheckedChangeListener { buttonView, _ ->
-            Toast.makeText(this, buttonView.text.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, buttonView.text.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }
