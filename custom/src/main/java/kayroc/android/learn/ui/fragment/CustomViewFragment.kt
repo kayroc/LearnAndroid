@@ -1,7 +1,6 @@
 package kayroc.android.learn.ui.fragment
 
 import android.os.Bundle
-import android.view.View
 import android.view.ViewStub
 import androidx.annotation.LayoutRes
 import kayroc.android.learn.R
@@ -26,8 +25,8 @@ class CustomViewFragment : BaseFragment() {
         return R.layout.fragment_custom_view
     }
 
-    override fun initView(view: View, savedInstanceState: Bundle?) {
-        val customViewStub = view.findViewById<ViewStub>(R.id.custom_view_stub)
+    override fun initView(savedInstanceState: Bundle?) {
+        val customViewStub = findViewById<ViewStub>(R.id.custom_view_stub)
         customViewStub?.layoutResource = if (arguments == null) 0 else arguments!!.getInt("layoutRes")
         customViewStub?.inflate()
     }

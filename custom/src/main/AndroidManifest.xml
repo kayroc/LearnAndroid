@@ -19,6 +19,7 @@
         <activity android:name=".ui.activity.CanvasActivity" />
         <activity android:name=".ui.activity.PaintActivity" />
         <activity android:name=".ui.activity.PathActivity" />
+        <activity android:name=".ui.activity.MatrixActivity" />
     </application>
 
 </manifest>

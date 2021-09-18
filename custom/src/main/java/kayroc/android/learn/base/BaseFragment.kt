@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 
 /**
@@ -22,7 +23,8 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(!hasInitView){
             hasInitView = true
-            initView(view, savedInstanceState)
+            initView(savedInstanceState)
+
         }
     }
 
@@ -35,6 +37,10 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected abstract fun getLayoutId(): Int
-    protected abstract fun initView(view: View, savedInstanceState: Bundle?)
+    protected abstract fun initView(savedInstanceState: Bundle?)
     open fun initData(){}
+
+    fun <T : View?> findViewById(@IdRes id: Int): T? {
+        return view?.findViewById<T>(id)
+    }
 }
