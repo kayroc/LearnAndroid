@@ -20,6 +20,7 @@
         <activity android:name=".ui.activity.PaintActivity" />
         <activity android:name=".ui.activity.PathActivity" />
         <activity android:name=".ui.activity.MatrixActivity" />
+        <activity android:name=".ui.activity.TouchEventDistributionActivity" />
     </application>
 
 </manifest>

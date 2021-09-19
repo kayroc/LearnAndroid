@@ -6,10 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kayroc.android.learn.entity.MenuEntity
-import kayroc.android.learn.ui.activity.CanvasActivity
-import kayroc.android.learn.ui.activity.MatrixActivity
-import kayroc.android.learn.ui.activity.PaintActivity
-import kayroc.android.learn.ui.activity.PathActivity
+import kayroc.android.learn.ui.activity.*
 import kayroc.android.learn.ui.adapter.TitleAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             MenuEntity("Paint 的使用", PaintActivity::class.java),
             MenuEntity("Path 的使用", PathActivity::class.java),
             MenuEntity("Matrix 的使用", MatrixActivity::class.java),
+            MenuEntity("事件分发", TouchEventDistributionActivity::class.java),
         )
 
         val titleAdapter = TitleAdapter(data)

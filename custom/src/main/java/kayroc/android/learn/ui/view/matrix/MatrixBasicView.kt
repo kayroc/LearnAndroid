@@ -337,6 +337,6 @@ class MatrixBasicView @JvmOverloads constructor(
             text1, mTextPaint, 800,
             Layout.Alignment.ALIGN_NORMAL, 1f, 0f, true
         )
-        staticLayout.draw(canvas);
+        staticLayout.draw(canvas)
     }
 }
