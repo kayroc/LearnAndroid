@@ -24,6 +24,17 @@ class SQLiteActivity : AppCompatActivity() {
         // 创建数据库
         val mBtnCreate = findViewById<Button>(R.id.btn_create)
         mBtnCreate.setOnClickListener {
+            /*
+             * getWritableDatabase 和 getReadableDatabase 的区别：
+             * 相同点：
+             *      1. 创建或打开一个现有的数据库
+             *          如果数据库已存在则直接打开，否则要创建一个新的数据库
+             *      2. 返回一个可对数据库进行读写操作的对象
+             * 不同点：
+             *      当数据库不可写入的时候(如磁盘空间已满)
+             *      getWritableDatabase：会出现异常
+             *      getReadableDatabase：将以只读的方式打开数据库
+             */
             dbHelper.writableDatabase
         }
 
