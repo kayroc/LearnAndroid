@@ -15,5 +15,11 @@ class MainActivity : AppCompatActivity() {
         mBtnFrameAnim.setOnClickListener {
             startActivity(Intent(this, FrameAnimActivity::class.java))
         }
+
+        // 补间动画
+        val mBtnTweenAnim = findViewById<Button>(R.id.btn_tween_anim)
+        mBtnTweenAnim.setOnClickListener {
+            startActivity(Intent(this, TweenAnimActivity::class.java))
+        }
     }
 }
