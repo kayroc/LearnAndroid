@@ -1,10 +1,11 @@
 package kayroc.android.learn
 
 import android.os.Bundle
-import android.view.animation.AnimationUtils
+import android.view.animation.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+
 
 /**
  * 补间动画
@@ -46,7 +47,7 @@ class TweenAnimActivity : AppCompatActivity() {
             mIvAnim.startAnimation(scaleAnim)
         }
 
-        // 透明 xml
+        // 渐变 xml
         mTvAlphaXml.setOnClickListener {
             val alphaAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_view_alpha)
             mIvAnim.startAnimation(alphaAnim)
@@ -56,6 +57,93 @@ class TweenAnimActivity : AppCompatActivity() {
         mTvTogetherXml.setOnClickListener {
             val togetherAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_view_together)
             mIvAnim.startAnimation(togetherAnim)
+        }
+
+        // 平移 Java
+        mTvTranslateJava.setOnClickListener {
+            val animation = TranslateAnimation(-100f, 100f, 0f, 0f)
+            // val animation = TranslateAnimation(
+            //     Animation.RELATIVE_TO_SELF, -50f,
+            //     Animation.RELATIVE_TO_SELF, 50f,
+            //     Animation.RELATIVE_TO_SELF, -10f,
+            //     Animation.RELATIVE_TO_SELF, 0f)
+            // 指定动画持续时间
+            animation.duration = 2000
+            // 设置重复次数
+            animation.repeatCount = 1
+            // 设置重复模式
+            animation.repeatMode = Animation.REVERSE
+            // 开始动画
+            mIvAnim.startAnimation(animation)
+        }
+
+        // 旋转 Java
+        mTvRotateJava.setOnClickListener {
+            val animation = RotateAnimation(0f, 180f,
+                mIvAnim.width / 2f, mIvAnim.height / 2f)
+            // 指定动画持续时间
+            animation.duration = 2000
+            // 设置重复次数
+            animation.repeatCount = 1
+            // 设置重复模式
+            animation.repeatMode = Animation.REVERSE
+            // 开始动画
+            mIvAnim.startAnimation(animation)
+        }
+
+        // 缩放 Java
+        mTvScaleJava.setOnClickListener {
+            val animation = ScaleAnimation(2f, 0.5f, 2f, 0.5f)
+            // 指定动画持续时间
+            animation.duration = 2000
+            // 设置重复次数
+            animation.repeatCount = 1
+            // 设置重复模式
+            animation.repeatMode = Animation.REVERSE
+            // 开始动画
+            mIvAnim.startAnimation(animation)
+        }
+
+        // 渐变 java
+        mTvAlphaJava.setOnClickListener {
+            val animation = AlphaAnimation(1f, 0f)
+            // 指定动画持续时间
+            animation.duration = 2000
+            // 设置重复次数
+            animation.repeatCount = 1
+            // 设置重复模式
+            animation.repeatMode = Animation.REVERSE
+            // 开始动画
+            mIvAnim.startAnimation(animation)
+        }
+
+        // 一起动 Java
+        mTvTogetherJava.setOnClickListener {
+            // 1.创建动画集合
+            val animationSet = AnimationSet(false)
+            animationSet.duration = 2000
+
+            // 2.向集合中添加动画
+
+            // 位移动画
+            val ta = TranslateAnimation(-100f, 100f, 0f, 0f)
+            // ta.duration = 2000
+            animationSet.addAnimation(ta)
+            // 缩放动画
+            val sa = ScaleAnimation(2f, 0.5f, 2f, 0.5f)
+            // sa.duration = 2000
+            animationSet.addAnimation(sa)
+            // 旋转动画
+            val ra = RotateAnimation(0f, 180f,
+                mIvAnim.width / 2f, mIvAnim.height / 2f)
+            // ra.duration = 2000
+            animationSet.addAnimation(ra)
+            // 渐变动画
+            val aa = AlphaAnimation(1f, 0f)
+            // aa.duration = 2000
+            animationSet.addAnimation(aa)
+
+            mIvAnim.startAnimation(animationSet)
         }
     }
 
