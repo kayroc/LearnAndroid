@@ -20,6 +20,7 @@
         <activity android:name=".TweenAnimActivity" />
         <activity android:name=".PropertyAnimActivity" />
         <activity android:name=".RippleEffectActivity" />
+        <activity android:name=".RevealEffectActivity" />
     </application>
 
 </manifest>

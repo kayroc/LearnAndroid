@@ -33,5 +33,11 @@ class MainActivity : AppCompatActivity() {
         mBtnRippleEffect.setOnClickListener {
             startActivity(Intent(this, RippleEffectActivity::class.java))
         }
+
+        // 揭露动画
+        val mBtnRevealEffect = findViewById<Button>(R.id.btn_reveal_effect)
+        mBtnRevealEffect.setOnClickListener {
+            startActivity(Intent(this, RevealEffectActivity::class.java))
+        }
     }
 }
