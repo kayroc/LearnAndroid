@@ -27,5 +27,11 @@ class MainActivity : AppCompatActivity() {
         mBtnPropertyAnim.setOnClickListener {
             startActivity(Intent(this, PropertyAnimActivity::class.java))
         }
+
+        // 涟漪动画(水波纹)
+        val mBtnRippleEffect = findViewById<Button>(R.id.btn_ripple_effect)
+        mBtnRippleEffect.setOnClickListener {
+            startActivity(Intent(this, RippleEffectActivity::class.java))
+        }
     }
 }
