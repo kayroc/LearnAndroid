@@ -39,5 +39,11 @@ class MainActivity : AppCompatActivity() {
         mBtnRevealEffect.setOnClickListener {
             startActivity(Intent(this, RevealEffectActivity::class.java))
         }
+
+        // 转场动画 & 共享元素
+        val mBtnTransition = findViewById<Button>(R.id.btn_transition)
+        mBtnTransition.setOnClickListener {
+            startActivity(Intent(this, TransitionActivity::class.java))
+        }
     }
 }
