@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    android:duration        动画时长
+    android:propertyName    属性名称
+    android:repeatCount     重复次数
+    android:repeatMode      重复模式
+    android:valueFrom       动画开始的值
+    android:valueTo         动画结束的值
+-->
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="2000"
+    android:propertyName="translationX"
+    android:repeatCount="1"
+    android:repeatMode="reverse"
+    android:valueFrom="0"
+    android:valueTo="100" />

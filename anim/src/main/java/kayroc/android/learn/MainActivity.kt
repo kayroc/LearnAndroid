@@ -21,5 +21,11 @@ class MainActivity : AppCompatActivity() {
         mBtnTweenAnim.setOnClickListener {
             startActivity(Intent(this, TweenAnimActivity::class.java))
         }
+
+        // 属性动画
+        val mBtnPropertyAnim = findViewById<Button>(R.id.btn_property_anim)
+        mBtnPropertyAnim.setOnClickListener {
+            startActivity(Intent(this, PropertyAnimActivity::class.java))
+        }
     }
 }

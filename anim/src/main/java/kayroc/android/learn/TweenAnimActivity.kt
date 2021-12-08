@@ -29,36 +29,12 @@ class TweenAnimActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tween_anim)
 
-        // 平移 xml
-        mTvTranslateXml.setOnClickListener {
-            val translateAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_view_translate)
-            mIvAnim.startAnimation(translateAnim)
-        }
+        xmlAnim()
 
-        // 旋转 xml
-        mTvRotateXml.setOnClickListener {
-            val rotateAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_view_rotate)
-            mIvAnim.startAnimation(rotateAnim)
-        }
+        javaAnim()
+    }
 
-        // 缩放 xml
-        mTvScaleXml.setOnClickListener {
-            val scaleAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_view_scale)
-            mIvAnim.startAnimation(scaleAnim)
-        }
-
-        // 渐变 xml
-        mTvAlphaXml.setOnClickListener {
-            val alphaAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_view_alpha)
-            mIvAnim.startAnimation(alphaAnim)
-        }
-
-        // 一起动 xml
-        mTvTogetherXml.setOnClickListener {
-            val togetherAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_view_together)
-            mIvAnim.startAnimation(togetherAnim)
-        }
-
+    private fun javaAnim() {
         // 平移 Java
         mTvTranslateJava.setOnClickListener {
             val animation = TranslateAnimation(-100f, 100f, 0f, 0f)
@@ -79,8 +55,10 @@ class TweenAnimActivity : AppCompatActivity() {
 
         // 旋转 Java
         mTvRotateJava.setOnClickListener {
-            val animation = RotateAnimation(0f, 180f,
-                mIvAnim.width / 2f, mIvAnim.height / 2f)
+            val animation = RotateAnimation(
+                0f, 180f,
+                mIvAnim.width / 2f, mIvAnim.height / 2f
+            )
             // 指定动画持续时间
             animation.duration = 2000
             // 设置重复次数
@@ -134,8 +112,10 @@ class TweenAnimActivity : AppCompatActivity() {
             // sa.duration = 2000
             animationSet.addAnimation(sa)
             // 旋转动画
-            val ra = RotateAnimation(0f, 180f,
-                mIvAnim.width / 2f, mIvAnim.height / 2f)
+            val ra = RotateAnimation(
+                0f, 180f,
+                mIvAnim.width / 2f, mIvAnim.height / 2f
+            )
             // ra.duration = 2000
             animationSet.addAnimation(ra)
             // 渐变动画
@@ -144,6 +124,38 @@ class TweenAnimActivity : AppCompatActivity() {
             animationSet.addAnimation(aa)
 
             mIvAnim.startAnimation(animationSet)
+        }
+    }
+
+    private fun xmlAnim() {
+        // 平移 xml
+        mTvTranslateXml.setOnClickListener {
+            val translateAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.view_translate)
+            mIvAnim.startAnimation(translateAnim)
+        }
+
+        // 旋转 xml
+        mTvRotateXml.setOnClickListener {
+            val rotateAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.view_rotate)
+            mIvAnim.startAnimation(rotateAnim)
+        }
+
+        // 缩放 xml
+        mTvScaleXml.setOnClickListener {
+            val scaleAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.view_scale)
+            mIvAnim.startAnimation(scaleAnim)
+        }
+
+        // 渐变 xml
+        mTvAlphaXml.setOnClickListener {
+            val alphaAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.view_alpha)
+            mIvAnim.startAnimation(alphaAnim)
+        }
+
+        // 一起动 xml
+        mTvTogetherXml.setOnClickListener {
+            val togetherAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.view_together)
+            mIvAnim.startAnimation(togetherAnim)
         }
     }
 
