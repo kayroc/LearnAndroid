@@ -46,10 +46,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, TransitionActivity::class.java))
         }
 
-        // 转场动画 & 共享元素
+        // 视图状态动画
         val mBtnViewState = findViewById<Button>(R.id.btn_view_state)
         mBtnViewState.setOnClickListener {
             startActivity(Intent(this, ViewStateActivity::class.java))
+        }
+
+        // 矢量图动画
+        val mBtnVector = findViewById<Button>(R.id.btn_vector)
+        mBtnVector.setOnClickListener {
+            startActivity(Intent(this, VectorActivity::class.java))
         }
     }
 }
