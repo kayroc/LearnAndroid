@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    旋转 360 度
+    vector_rotation.xml     位于 res/animator 目录下
+
+    Animator 的根标签为 objectAnimator，对应 ObjectAnimator
+    -->
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="6000"
+    android:propertyName="rotation"
+    android:valueFrom="0"
+    android:valueTo="360" />

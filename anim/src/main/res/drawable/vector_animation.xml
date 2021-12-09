@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    vector_animation.xml   位于 res/drawable 目录
+
+    <animated-vector>：根标签
+    android:drawable：指定需要进行动画的矢量图
+
+    <target>：指定需要进行动画的 path 或 group
+    android:animation：指定为一般的 ObjectAnimator 或 AnimatorSet 对应的 XML
+    -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/vector_drawable">
+
+    <target
+        android:name="vector"
+        android:animation="@animator/vector_anim" />
+
+    <target
+        android:name="rotation"
+        android:animation="@animator/vector_rotation" />
+
+</animated-vector>
