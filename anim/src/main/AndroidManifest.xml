@@ -25,6 +25,7 @@
         <activity android:name=".TransitionEffectActivity" />
         <activity android:name=".ViewStateActivity" />
         <activity android:name=".VectorActivity" />
+        <activity android:name=".ConstraintSetActivity" />
     </application>
 
 </manifest>

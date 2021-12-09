@@ -57,5 +57,11 @@ class MainActivity : AppCompatActivity() {
         mBtnVector.setOnClickListener {
             startActivity(Intent(this, VectorActivity::class.java))
         }
+
+        // ConstraintSet 动画
+        val mBtnConstraint = findViewById<Button>(R.id.btn_constraint)
+        mBtnConstraint.setOnClickListener {
+            startActivity(Intent(this, ConstraintSetActivity::class.java))
+        }
     }
 }
