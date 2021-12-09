@@ -45,5 +45,11 @@ class MainActivity : AppCompatActivity() {
         mBtnTransition.setOnClickListener {
             startActivity(Intent(this, TransitionActivity::class.java))
         }
+
+        // 转场动画 & 共享元素
+        val mBtnViewState = findViewById<Button>(R.id.btn_view_state)
+        mBtnViewState.setOnClickListener {
+            startActivity(Intent(this, ViewStateActivity::class.java))
+        }
     }
 }

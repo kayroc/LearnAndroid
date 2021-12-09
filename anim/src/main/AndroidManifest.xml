@@ -23,6 +23,7 @@
         <activity android:name=".RevealEffectActivity" />
         <activity android:name=".TransitionActivity" />
         <activity android:name=".TransitionEffectActivity" />
+        <activity android:name=".ViewStateActivity" />
     </application>
 
 </manifest>
