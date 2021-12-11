@@ -3,11 +3,11 @@ package kayroc.android.learn.http
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kayroc.android.learn.R
+import kayroc.android.learn.utils.IOUtils.inputStream2String
 import kayroc.android.learn.utils.JsonUtils
 import org.apache.http.HttpVersion
 import org.apache.http.NameValuePair
@@ -31,10 +31,7 @@ import org.apache.http.params.HttpConnectionParams
 import org.apache.http.params.HttpParams
 import org.apache.http.params.HttpProtocolParams
 import org.apache.http.protocol.HTTP
-import java.io.BufferedReader
 import java.io.IOException
-import java.io.InputStream
-import java.io.InputStreamReader
 import java.util.*
 
 /**
@@ -60,10 +57,10 @@ class HttpClientActivity : AppCompatActivity() {
         setContentView(R.layout.activity_http_client)
 
         mBtnGet.setOnClickListener {
-            mHandler.post { useHttpClientPost() }
+            mHandler.post { doPostRequest() }
         }
         mBtnPost.setOnClickListener {
-            mHandler.post { useHttpClientGet() }
+            mHandler.post { doGetRequest() }
         }
     }
 
@@ -72,7 +69,7 @@ class HttpClientActivity : AppCompatActivity() {
         mHttpClientThread.quit()
     }
 
-    private fun useHttpClientPost() {
+    private fun doPostRequest() {
         //1. 创建 HttpClient 对象（DefaultHttpClient 为 HttpClient 的实现类）
         // HttpClient httpClient = new DefaultHttpClient();
         val httpClient = createHttpClient()
@@ -100,7 +97,7 @@ class HttpClientActivity : AppCompatActivity() {
         }
     }
 
-    private fun useHttpClientGet() {
+    private fun doGetRequest() {
         val url = "http://api.k780.com/?app=weather.today&weaId=1&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json"
         //1. 创建 HttpClient 对象（DefaultHttpClient 为 HttpClient 的实现类）
         // HttpClient httpClient = new DefaultHttpClient();
@@ -121,40 +118,6 @@ class HttpClientActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-    }
-
-    /**
-     * 将输入流转换成字符串
-     *
-     * @param inputStream httpResponse 响应数据的输入流
-     * @return
-     */
-    private fun inputStream2String(inputStream: InputStream): String {
-        var data = ""
-        var bufferedReader: BufferedReader? = null
-        try {
-            val inputStreamReader = InputStreamReader(inputStream)
-            bufferedReader = BufferedReader(inputStreamReader)
-            val stringBuilder = StringBuilder()
-            var line: String? = null
-            while (bufferedReader.readLine().also { line = it } != null) {
-                stringBuilder.append(line).append("\n")
-            }
-            data = stringBuilder.toString()
-            if (!TextUtils.isEmpty(data)) {
-                //去除最后一个多余的换行符
-                data = data.substring(0, data.length - 1)
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } finally {
-            try {
-                bufferedReader?.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-        return data
     }
 
     private fun createHttpClient(): HttpClient {

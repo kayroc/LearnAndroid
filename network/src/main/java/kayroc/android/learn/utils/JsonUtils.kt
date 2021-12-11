@@ -14,6 +14,7 @@ object JsonUtils {
      *
      * @return
      */
+    @JvmStatic
     fun formatDataFromJson(response: String): String {
         try {
             if (response.startsWith("{")) {
@@ -28,4 +29,5 @@ object JsonUtils {
         }
         return response
     }
+
 }

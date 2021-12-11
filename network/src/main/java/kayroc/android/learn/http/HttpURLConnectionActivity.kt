@@ -1,68 +1,100 @@
 package kayroc.android.learn.http
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kayroc.android.learn.R
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import kayroc.android.learn.utils.IOUtils.inputStream2String
+import kayroc.android.learn.utils.JsonUtils.formatDataFromJson
+import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
-import kotlin.concurrent.thread
+import java.net.URLEncoder
 
+/**
+ * @author kayroc
+ */
 class HttpURLConnectionActivity : AppCompatActivity() {
 
-    private val mBtnRequest: Button by lazy { findViewById<Button>(R.id.btn_request) }
-    private val mTvResponse: TextView by lazy { findViewById<TextView>(R.id.tv_response) }
+    private val mBtnGet: Button by lazy { findViewById<Button>(R.id.btn_get) }
+    private val mBtnPost: Button by lazy { findViewById<Button>(R.id.btn_post) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_http_urlconnection)
 
-        mBtnRequest.setOnClickListener {
-            // 发送请求
-            sendRequestWithHttpURLConnection()
-        }
+        mBtnGet.setOnClickListener { doGetRequest() }
+
+        mBtnPost.setOnClickListener { doPostRequest() }
     }
 
-    private fun sendRequestWithHttpURLConnection() {
-        // 开启线程来发起网络请求
-        thread {
-            var connection: HttpURLConnection? = null
+    private fun doPostRequest() {
+        Thread {
             try {
-                val response = StringBuilder()
-                val url = URL("https://www.baidu.com")
-                connection = url.openConnection() as HttpURLConnection
-                connection.connectTimeout = 8000
-                connection.readTimeout = 8000
+                // 创建 URL 对象
+                val url = URL("https://postman-echo.com/post")
+                // 调用 URL 对象的 openConnection 方法获取 HttpURLConnection 实例
+                val httpURLConnection = url.openConnection() as HttpURLConnection
+                // 设置请求方法（这里是 POST 请求）
+                httpURLConnection.requestMethod = "POST"
+                // 设置连接超时时间
+                httpURLConnection.connectTimeout = 15000
+                // 设置读取超时时间
+                httpURLConnection.readTimeout = 15000
+                // 设置允许输入输出
+                httpURLConnection.doInput = true
+                httpURLConnection.doOutput = true
+                // 设置请求参数
+                val outputStream = httpURLConnection.outputStream
+                val params = "username=" + URLEncoder.encode("wildma", "UTF-8") +
+                    "&password=" + URLEncoder.encode("123456", "UTF-8")
+                outputStream.write(params.toByteArray())
+                outputStream.flush()
+                outputStream.close()
 
-                // 提交数据时设置
-                // connection.requestMethod = "POST"
-                // val output = DataOutputStream(connection.outputStream)
-                // output.writeBytes("username=admin&password=123456")
-
-                val input = connection.inputStream
-                // 下面对获取到的输入流进行读取
-                val reader = BufferedReader(InputStreamReader(input))
-                reader.use {
-                    reader.forEachLine {
-                        response.append(it)
-                    }
+                // 连接
+                httpURLConnection.connect()
+                // 检查是否请求成功，状态码 200 表示成功
+                if (httpURLConnection.responseCode == 200) {
+                    // 调用 HttpURLConnection 对象的 getInputStream 方法获取响应数据的输入流
+                    val inputStream = httpURLConnection.inputStream
+                    // 将输入流转换成字符串
+                    val data = inputStream2String(inputStream)
+                    Log.i("HttpURLConnection", "Post 请求：" + formatDataFromJson(data))
                 }
-                showResponse(response.toString())
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 e.printStackTrace()
-            } finally {
-                connection?.disconnect()
             }
-        }
+        }.start()
     }
 
-    private fun showResponse(response: String) {
-        runOnUiThread {
-            // 在这里进行UI操作，将结果显示到界面上
-            mTvResponse.text = response
-        }
+    private fun doGetRequest() {
+        Thread {
+            try {
+                // 创建 URL 对象
+                val url = URL("https://www.baidu.com")
+                // 调用 URL 对象的 openConnection 方法获取 HttpURLConnection 实例
+                val httpURLConnection = url.openConnection() as HttpURLConnection
+                // 设置请求方法（这里是 GET 请求）
+                httpURLConnection.requestMethod = "GET"
+                // 设置连接超时时间
+                httpURLConnection.connectTimeout = 15000
+                // 设置读取超时时间
+                httpURLConnection.readTimeout = 15000
+                // 连接
+                httpURLConnection.connect()
+                // 检查是否请求成功，状态码 200 表示成功
+                if (httpURLConnection.responseCode == 200) {
+                    // 调用 HttpURLConnection 对象的 getInputStream 方法获取响应数据的输入流
+                    val inputStream = httpURLConnection.inputStream
+                    // 将输入流转换成字符串
+                    val data = inputStream2String(inputStream)
+                    Log.i("HttpURLConnection", "Get 请求：\n$data")
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }.start()
     }
 }
