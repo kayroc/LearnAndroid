@@ -14,15 +14,11 @@
         android:theme="@style/Theme.LearnAndroid"
         android:networkSecurityConfig="@xml/network_config"
         tools:ignore="UnusedAttribute">
-        <activity
-            android:name=".retrofit.RetrofitActivity"
-            android:label="使用 Retrofit 访问网络" />
-        <activity
-            android:name=".okhttp.OkHttpActivity"
-            android:label="使用 OkHttp 访问网络" />
-        <activity
-            android:name=".http.HttpURLConnectionActivity"
-            android:label="使用 HttpURLConnection 访问网络" />
+
+        <!--Failed resolution of: Lorg/apache/http/params/BasicHttpParams-->
+        <!--https://developer.android.google.cn/about/versions/pie/android-9.0-changes-28#apache-p-->
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".http.HttpClientActivity"
+            android:label="使用 HttpClient 访问网络" />
+        <activity
+            android:name=".retrofit.RetrofitActivity"
+            android:label="使用 Retrofit 访问网络" />
+        <activity
+            android:name=".okhttp.OkHttpActivity"
+            android:label="使用 OkHttp 访问网络" />
+        <activity
+            android:name=".http.HttpURLConnection"
+            android:label="使用 HttpURLConnection 访问网络" />
     </application>
 
 </manifest>
