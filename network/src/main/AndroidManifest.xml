@@ -38,6 +38,8 @@
         <activity
             android:name=".okhttp.OkHttpActivity"
             android:label="使用 OkHttp 访问网络" />
+        <activity android:name=".volley.VolleyActivity"
+            android:label="使用 Volley 访问网络"/>
     </application>
 
 </manifest>

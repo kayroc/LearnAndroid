@@ -13,6 +13,8 @@ import java.net.URL
 import java.net.URLEncoder
 
 /**
+ * 官方 API：https://developer.android.com/reference/java/net/HttpURLConnection
+ *
  * @author kayroc
  */
 class HttpURLConnectionActivity : AppCompatActivity() {
@@ -47,7 +49,7 @@ class HttpURLConnectionActivity : AppCompatActivity() {
                 httpURLConnection.doOutput = true
                 // 设置请求参数
                 val outputStream = httpURLConnection.outputStream
-                val params = "username=" + URLEncoder.encode("wildma", "UTF-8") +
+                val params = "username=" + URLEncoder.encode("kayroc", "UTF-8") +
                     "&password=" + URLEncoder.encode("123456", "UTF-8")
                 outputStream.write(params.toByteArray())
                 outputStream.flush()
@@ -73,7 +75,7 @@ class HttpURLConnectionActivity : AppCompatActivity() {
         Thread {
             try {
                 // 创建 URL 对象
-                val url = URL("https://www.baidu.com")
+                val url = URL("http://api.k780.com/?app=weather.today&weaId=1&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json")
                 // 调用 URL 对象的 openConnection 方法获取 HttpURLConnection 实例
                 val httpURLConnection = url.openConnection() as HttpURLConnection
                 // 设置请求方法（这里是 GET 请求）

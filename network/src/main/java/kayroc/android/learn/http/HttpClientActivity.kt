@@ -57,10 +57,10 @@ class HttpClientActivity : AppCompatActivity() {
         setContentView(R.layout.activity_http_client)
 
         mBtnGet.setOnClickListener {
-            mHandler.post { doPostRequest() }
+            mHandler.post { doGetRequest() }
         }
         mBtnPost.setOnClickListener {
-            mHandler.post { doGetRequest() }
+            mHandler.post { doPostRequest() }
         }
     }
 
