@@ -23,6 +23,14 @@ import kayroc.android.learn.utils.JsonUtils.formatDataFromJson
  * Github：https://github.com/google/volley
  * Volley源码解析：https://www.cnblogs.com/carlo/atticles/4972808.html
  *
+ * 功　　能：基于HttpUrlConnection，封装了URL图片加载框架，支持图片加载，Activity和生命周期可以联动；
+ * 性　　能：可扩展性好，可支持HttpClient、HttpUrlConnection和Okhttp;
+ * 应用场景：适合轻量级网络交互，网络请求频繁，传输数据量小，不适合大数据的网络操作（比如下载视频、音频），所以不适合用来上传文件；
+ * 使　　用：封装性好，简单易用；
+ * 备　　注：Volley的Request和Response都是把数据方法放到byte[]数组里，不支持输入输出流
+ *         把数据放到数组中，如果大文件多了，数组就会非常大且多消耗内存
+ *         所以不如直接返回Stream那样具备可操作性,比如下载一个大文件，不可能把每个文件都缓存到内存之后再写到文件里
+ *
  * @author kayroc
  */
 class VolleyActivity : AppCompatActivity() {
@@ -134,10 +142,10 @@ class VolleyActivity : AppCompatActivity() {
             Method.POST,
             url,
             Response.Listener { response -> // 如果请求失败，在控制台打印数据
-                Log.i("Volley", "Post 请求成功：" + formatDataFromJson(response!!))
+                Log.i("Volley", "Post 请求成功：\n${formatDataFromJson(response!!)}")
             },
             Response.ErrorListener { error -> // 如果请求失败，在控制台打印失败信息
-                Log.i("Volley", "Post 请求失败：$error")
+                Log.i("Volley", "Post 请求失败：\n$error")
             }) {
             // 重新方法，定义请求参数
             @Throws(AuthFailureError::class)
@@ -159,16 +167,16 @@ class VolleyActivity : AppCompatActivity() {
 
     private fun doGetRequest() {
         // 定义请求的url地址
-        val url = "http://api.k780.com/?app=weather.today&weaId=1&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json"
+        val url = "https://postman-echo.com/get?name=kayroc&password=123456"
         // 定义请求(json请求)
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET,
             url,
             null,
             { response -> // 如果请求成功，在控制台打印数据
-                Log.i("Volley", "Get 请求成功：${formatDataFromJson(response.toString())}")
+                Log.i("Volley", "Get 请求成功：\n${formatDataFromJson(response.toString())}")
             }) { error -> // 如果请求失败，在控制台打印失败信息
-            Log.i("Volley", "Get 请求失败：" + error.message, error)
+            Log.i("Volley", "Get 请求失败：\n ${error.message}", error)
         }
         // 设置当前的请求标志，标志是后面用于取消请求队列的
         jsonObjectRequest.tag = "getRequest"

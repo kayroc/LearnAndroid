@@ -6,13 +6,15 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kayroc.android.learn.http.HttpClientActivity
 import kayroc.android.learn.http.HttpURLConnectionActivity
+import kayroc.android.learn.okhttp.OkHttpActivity
 import kayroc.android.learn.volley.VolleyActivity
 
 class MainActivity : AppCompatActivity() {
 
     private val mBtnHttpClient: Button by lazy { findViewById<Button>(R.id.btn_http_client) }
     private val mBtnHttpUrlConnection: Button by lazy { findViewById<Button>(R.id.btn_http_url_connection) }
-    private val mBtnHttpUrlVolley: Button by lazy { findViewById<Button>(R.id.btn_volley) }
+    private val mBtnVolley: Button by lazy { findViewById<Button>(R.id.btn_volley) }
+    private val mBtnOkHttp: Button by lazy { findViewById<Button>(R.id.btn_okhttp) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +31,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Volley 的使用
-        mBtnHttpUrlVolley.setOnClickListener {
+        mBtnVolley.setOnClickListener {
             startActivity(Intent(this, VolleyActivity::class.java))
+        }
+
+        // OkHttp 的使用
+        mBtnOkHttp.setOnClickListener {
+            startActivity(Intent(this, OkHttpActivity::class.java))
         }
     }
 }

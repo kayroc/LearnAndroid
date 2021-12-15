@@ -3,200 +3,132 @@ package kayroc.android.learn.okhttp
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kayroc.android.learn.R
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import org.json.JSONArray
-import org.xml.sax.InputSource
-import org.xmlpull.v1.XmlPullParser
-import org.xmlpull.v1.XmlPullParserFactory
-import java.io.StringReader
-import javax.xml.parsers.SAXParserFactory
-import kotlin.concurrent.thread
+import kayroc.android.learn.utils.JsonUtils.formatDataFromJson
+import okhttp3.*
+import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 /**
+ * 官方文档：https://square.github.io/okhttp/
+ * Github：https://github.com/square/okhttp
+ * Android OkHttp完全解析：https://blog.csdn.net/lmj623565791/article/details/47911083
+ * OkHttp使用教程：http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0106/2275.html
+ *
+ *
+ * 功　　能：高性能Http请求库，可把它理解成是一个封装之后的类似HttpUrlConnection的一个东西，属于同级并不是基于二者，支持SPDY，共享同一个Scoket来处理同一个服务器的所有请求，支持同步异步，无缝的支持GZIP来减少数据流量；
+ * 性　　能：基于NIO和Okio，所以性能比较好，请求处理速度快（IO:阻塞式；NIO:非阻塞式；Okio是Square公司基于IO和NIO做的一个更简单、高效处理数据流的一个库）;
+ * 应用场景：重量级网络交互场景，网络请求频繁、传输数据量大（当然更推荐Retrofit，反正Retrofit是基于Okhttp的）；
+ * 使　　用：API调用简单方便，使用时需要进行多一层封装；
+ *
  * @author kayroc
  */
 class OkHttpActivity : AppCompatActivity() {
-
-    private val mBtnRequest: Button by lazy { findViewById<Button>(R.id.btn_request) }
-    private val mTvResponse: TextView by lazy { findViewById<TextView>(R.id.tv_response) }
+    private val mBtnGet: Button by lazy { findViewById<Button>(R.id.btn_get) }
+    private val mBtnPost: Button by lazy { findViewById<Button>(R.id.btn_post) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_okhttp)
 
-        mBtnRequest.setOnClickListener {
-            // 发送请求
-            // sendRequestHTML()
-            // sendRequestXML()
-            sendRequestJSON()
-        }
+        // 发送get请求
+        mBtnGet.setOnClickListener { doGetRequest() }
+
+        // 发送post请求
+        mBtnPost.setOnClickListener { doPostRequest() }
     }
 
-    /*
-     *  [
-     *      {
-     *          "id":"5",
-     *          "version":"5.5",
-     *          "name":"Clash of Clans"
-     *      }
-     *  ]
+    private fun doPostRequest() {
+        val url = "https://postman-echo.com/post"
+        // 创建OkHttpClient对象
+        val client: OkHttpClient = OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(1, TimeUnit.SECONDS)
+            .build()
+        // 通过FormEncodingBuilder构建请求体，add方法添加对应的参数键值对
+        // RequestBody requestBody = new FormEncodingBuilder()
+        // okhttp3 中已找不到 FormEncodingBuilder，使用FormBody代替了
+        val requestBody: FormBody = FormBody.Builder()
+            .add("platform", "android")
+            .add("SDK", "30")
+            .build()
+        // 通过Request.Builder去构建Request请求对象
+        val request: Request = Request.Builder()
+            .url(url)
+            .post(requestBody)
+            .build()
+        // 通过Request对象和OkHttpClient去得到一个Call对象
+        val call = client.newCall(request)
+
+        // 同步执行网络请求
+        // try {
+        //     call.execute()
+        // } catch (e: IOException) {
+        //     e.printStackTrace()
+        // }
+
+        // 调用Call对象的异步方法去执行请求。调用call对象的enqueue方法
+        call.enqueue(object : Callback {
+            @Throws(IOException::class)
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body
+                if (responseBody != null) {
+                    val str = responseBody.string()
+                    Log.i("OkHttp", "post 请求成功：\n${Thread.currentThread().name}")
+                    Log.i("OkHttp", "post 请求成功：\n${formatDataFromJson(str)}")
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                Log.i("OkHttp", "post 请求失败：\n${Thread.currentThread().name}")
+                Log.i("OkHttp", "post 请求失败：\n${e.message}")
+            }
+        })
+    }
+
+    /**
+     * 使用步骤：
+     * 1. 创建 OkHttpClient 对象
+     * 2. 构造一个 Request 对象，传入相应的 url 和参数
+     * 3. 通过 Request 对象和 OkHttpClient 去得到一个 Call 对象
+     * 4. 通过 Call 对象的异步方法去执行请求
+     * 5. 在 Call 对象对应方法的 CallBack 回调中去处理请求结果
      */
-    private fun sendRequestJSON() {
-        thread {
-            try {
-                val client = OkHttpClient()
-                val request = Request.Builder()
-                    // 指定访问的服务器地址是电脑本机
-                    .url("http://10.0.2.2/get_data.json")
-                    .build()
-                val response = client.newCall(request).execute()
-                val responseData = response.body?.string()
-                if (responseData != null) {
-                    // parseJSONWithJSONObject(responseData)
-                    parseJSONWithGSON(responseData)
+    private fun doGetRequest() {
+        val url = "https://postman-echo.com/get?name=kayroc&password=123456"
+        // 创建OkHttpClient对象
+        val client = OkHttpClient()
+        // 构造一个Request对象，传入相应的url和参数
+        val request: Request = Request.Builder().url(url).build()
+        // 通过Request对象和OkHttpClient去得到一个Call对象
+        val call = client.newCall(request)
+
+        // 同步执行网络请求
+        // try {
+        //     call.execute()
+        // } catch (e: IOException) {
+        //     e.printStackTrace()
+        // }
+
+        // 调用Call对象的异步方法去执行请求。调用call对象的enqueue方法
+        call.enqueue(object : Callback {
+            @Throws(IOException::class)
+            override fun onResponse(call: Call, response: Response) {
+                // 在Call对象对应方法的CallBack回调中去处理请求结果
+                val body = response.body
+                if (body != null) {
+                    val str = body.string()
+                    Log.i("OkHttp", "get 请求成功：\n${Thread.currentThread().name}")
+                    Log.i("OkHttp", "get 请求成功：\n${formatDataFromJson(str)}")
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
-        }
-    }
 
-    private fun parseJSONWithJSONObject(jsonData: String) {
-        try {
-            val jsonArray = JSONArray(jsonData)
-            for (i in 0 until jsonArray.length()) {
-                val jsonObject = jsonArray.getJSONObject(i)
-                val id = jsonObject.getString("id")
-                val name = jsonObject.getString("name")
-                val version = jsonObject.getString("version")
-                Log.d("MainActivity", "id is $id")
-                Log.d("MainActivity", "name is $name")
-                Log.d("MainActivity", "version is $version")
+            override fun onFailure(call: Call, e: IOException) {
+                Log.i("OkHttp", "get 请求失败：\n${Thread.currentThread().name}")
+                Log.i("OkHttp", "get 请求失败：\n${e.message}")
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun parseJSONWithGSON(jsonData: String) {
-        val gson = Gson()
-        val typeOf = object : TypeToken<List<App>>() {}.type
-        val appList = gson.fromJson<List<App>>(jsonData, typeOf)
-        for (app in appList) {
-            Log.d("MainActivity", "id is ${app.id}")
-            Log.d("MainActivity", "name is ${app.name}")
-            Log.d("MainActivity", "version is ${app.version}")
-        }
-    }
-
-    /*
-     * <apps>
-     *     <app>
-     *         <id>1</id>
-     *         <name>Google Play</name>
-     *         <version>1.0</version>
-     *     </app>
-     *     ......
-     * </apps>
-     */
-    private fun sendRequestXML() {
-        thread {
-            try {
-                val client = OkHttpClient()
-                val request = Request.Builder()
-                    // 指定访问的服务器地址是电脑本机
-                    .url("http://10.0.2.2/get_data.xml")
-                    .build()
-                val response = client.newCall(request).execute()
-                val responseData = response.body?.string()
-                if (responseData != null) {
-                    // parseJSONWithJSONObject(responseData)
-                    parseJSONWithGSON(responseData)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    private fun parseXMLWithPull(xmlData: String) {
-        try {
-            val factory = XmlPullParserFactory.newInstance()
-            val xmlPullParser = factory.newPullParser()
-            xmlPullParser.setInput(StringReader(xmlData))
-            var eventType = xmlPullParser.eventType
-            var id = ""
-            var name = ""
-            var version = ""
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                val nodeName = xmlPullParser.name
-                when (eventType) {
-                    // 开始解析某个节点
-                    XmlPullParser.START_TAG -> {
-                        when (nodeName) {
-                            "id" -> id = xmlPullParser.nextText()
-                            "name" -> name = xmlPullParser.nextText()
-                            "version" -> version = xmlPullParser.nextText()
-                        }
-                    }
-                    // 完成解析某个节点
-                    XmlPullParser.END_TAG -> {
-                        if ("app" == nodeName) {
-                            Log.d("MainActivity", "id is $id")
-                            Log.d("MainActivity", "name is $name")
-                            Log.d("MainActivity", "version is $version")
-                        }
-                    }
-                }
-                eventType = xmlPullParser.next()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun parseXMLWithSAX(xmlData: String) {
-        try {
-            val factory = SAXParserFactory.newInstance()
-            val xmlReader = factory.newSAXParser().getXMLReader()
-            val handler = ContentHandler()
-            // 将ContentHandler的实例设置到XMLReader中
-            xmlReader.contentHandler = handler
-            // 开始执行解析
-            xmlReader.parse(InputSource(StringReader(xmlData)))
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun sendRequestHTML() {
-        thread {
-            try {
-                val client = OkHttpClient()
-                val request = Request.Builder()
-                    .url("https://www.baidu.com")
-                    .build()
-                val response = client.newCall(request).execute()
-                val responseData = response.body?.string()
-                if (responseData != null) {
-                    showResponse(responseData)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    private fun showResponse(response: String) {
-        runOnUiThread {
-            // 在这里进行UI操作，将结果显示到界面上
-            mTvResponse.text = response
-        }
+        })
     }
 }

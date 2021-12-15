@@ -98,7 +98,7 @@ class HttpClientActivity : AppCompatActivity() {
     }
 
     private fun doGetRequest() {
-        val url = "http://api.k780.com/?app=weather.today&weaId=1&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json"
+        val url = "https://postman-echo.com/get?name=kayroc&password=123456"
         //1. 创建 HttpClient 对象（DefaultHttpClient 为 HttpClient 的实现类）
         // HttpClient httpClient = new DefaultHttpClient();
         val httpClient = createHttpClient()

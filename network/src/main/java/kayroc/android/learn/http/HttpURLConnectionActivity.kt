@@ -63,7 +63,7 @@ class HttpURLConnectionActivity : AppCompatActivity() {
                     val inputStream = httpURLConnection.inputStream
                     // 将输入流转换成字符串
                     val data = inputStream2String(inputStream)
-                    Log.i("HttpURLConnection", "Post 请求：" + formatDataFromJson(data))
+                    Log.i("HttpURLConnection", "Post 请求：\n" + formatDataFromJson(data))
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -75,7 +75,7 @@ class HttpURLConnectionActivity : AppCompatActivity() {
         Thread {
             try {
                 // 创建 URL 对象
-                val url = URL("http://api.k780.com/?app=weather.today&weaId=1&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json")
+                val url = URL("https://postman-echo.com/get?name=kayroc&password=123456")
                 // 调用 URL 对象的 openConnection 方法获取 HttpURLConnection 实例
                 val httpURLConnection = url.openConnection() as HttpURLConnection
                 // 设置请求方法（这里是 GET 请求）
