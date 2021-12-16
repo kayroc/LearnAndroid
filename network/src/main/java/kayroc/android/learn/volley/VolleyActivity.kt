@@ -142,9 +142,11 @@ class VolleyActivity : AppCompatActivity() {
             Method.POST,
             url,
             Response.Listener { response -> // 如果请求失败，在控制台打印数据
+                Log.i("Volley", "post 请求成功：\n${Thread.currentThread().name}")
                 Log.i("Volley", "Post 请求成功：\n${formatDataFromJson(response!!)}")
             },
             Response.ErrorListener { error -> // 如果请求失败，在控制台打印失败信息
+                Log.i("Volley", "post 请求失败：\n${Thread.currentThread().name}")
                 Log.i("Volley", "Post 请求失败：\n$error")
             }) {
             // 重新方法，定义请求参数
@@ -174,8 +176,10 @@ class VolleyActivity : AppCompatActivity() {
             url,
             null,
             { response -> // 如果请求成功，在控制台打印数据
+                Log.i("Volley", "Get 请求成功：\n${Thread.currentThread().name}")
                 Log.i("Volley", "Get 请求成功：\n${formatDataFromJson(response.toString())}")
             }) { error -> // 如果请求失败，在控制台打印失败信息
+            Log.i("Volley", "Get 请求失败：\n${Thread.currentThread().name}")
             Log.i("Volley", "Get 请求失败：\n ${error.message}", error)
         }
         // 设置当前的请求标志，标志是后面用于取消请求队列的

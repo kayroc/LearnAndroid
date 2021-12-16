@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kayroc.android.learn.http.HttpClientActivity
 import kayroc.android.learn.http.HttpURLConnectionActivity
 import kayroc.android.learn.okhttp.OkHttpActivity
+import kayroc.android.learn.retrofit.RetrofitActivity
 import kayroc.android.learn.volley.VolleyActivity
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private val mBtnHttpUrlConnection: Button by lazy { findViewById<Button>(R.id.btn_http_url_connection) }
     private val mBtnVolley: Button by lazy { findViewById<Button>(R.id.btn_volley) }
     private val mBtnOkHttp: Button by lazy { findViewById<Button>(R.id.btn_okhttp) }
+    private val mBtnRetrofit: Button by lazy { findViewById<Button>(R.id.btn_retrofit) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         // OkHttp 的使用
         mBtnOkHttp.setOnClickListener {
             startActivity(Intent(this, OkHttpActivity::class.java))
+        }
+
+        // Retrofit 的使用
+        mBtnRetrofit.setOnClickListener {
+            startActivity(Intent(this, RetrofitActivity::class.java))
         }
     }
 }
